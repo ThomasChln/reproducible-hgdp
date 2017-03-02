@@ -120,7 +120,7 @@ In order to use genetic similarities to deliver personalized treatments to patie
 
 In 2008, Li *et al.*^[1](#ref1)^ showed that although specific world regions have different genetic origins, all revealed population structures in principal component analyses (PCAs). Similar population structures were also observed in studies using other genome-wide variations datasets ^[2](#ref2),[3](#ref3)^.
 
-Li *et al.* applied PCAs on subsets of individuals from two geographic regions, Europe and the Middle East & North Africa and displayed the results on the two first principal components in their article as Figures 2A and B, respectively (with the latter labeled only Middle East).
+Li *et al.* applied PCAs on subsets of individuals from two geographic regions, Europe and the Middle East & North Africa, and displayed the results on the two first principal components in their article as Figures 2A and B, respectively, with the latter labeled only Middle East.
 
 In an attempt to replicate these two figures, we performed quality control, minor allele frequency filtering, tag SNP selection^[4](#ref4)^, and PCAs on both regional subsets of the SNP microarray data. The PCAs were then displayed on the first two principal components.
 
@@ -146,7 +146,7 @@ For comparison, the supporting online material of Li *et al.* reported that indi
 
 PCAs were applied on the two analysis sets and displayed using the SNPClust R package v1.0.0^[2](#ref2)^. Principal component analysis (PCA) is a dimensionality reduction method, which projects SNPs by linear combination to maximize the variance on successive axes, *i.e.* principal components, while constraining the axes to be orthogonal.
 
-The supporting online material of Li *et al.* reports that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK^[6](#ref6)^ (version not specified) and then performed PCAs on the IBS matrix for each region separately. In this study PCAs were applied directly on the analysis sets and not on IBS matrices.
+The supporting online material of Li *et al.* reports that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK^[6](#ref6)^ (version not specified) and then performed PCAs on the IBS matrix for each region separately. In this study, PCAs were applied on the analysis sets and not on IBS matrices.
 
 # Results
 
@@ -162,7 +162,7 @@ ggplot2::ggsave('figure1.eps', ggeu)
 
 ## PCA of the Middle East & North Africa analysis set
 
-The PCA of the Middle East & North Africa analysis set was displayed on the two first principal components ([Figure 2](#fig2)). Individuals were grouped by populations and the replicated figure matched closely with Li *et al.*'s figure 2B.
+The PCA of the Middle East & North Africa analysis set was displayed on the two first principal components ([Figure 2](#fig2)). Individuals were grouped by populations and the replicated figure matched closely with Li *et al.*'s Figure 2B.
 
 Two differences from Li *et al.*'s analysis were noted, first the Bedouin and Druze populations exhibited a larger spread on PC1 in the original figure. Second, one Bedouin individual was located with Mozabite individuals, which did not appear in Li *et al.*'s Figure 2B. 
 
