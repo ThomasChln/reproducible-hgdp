@@ -192,7 +192,7 @@ Computing environment in a Docker container is available from: https://hub.docke
 
 Source code of this article and Dockerfile: https://github.com/ThomasChln/reproducible-hgdp.
 
-Archived source code as at time of publication: https://doi.org/10.5281/zenodo.345122
+Archived source code as at time of publication: https://doi.org/10.5281/zenodo.345137
 
 License: GNU General Public License version 3.0
 
