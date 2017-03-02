@@ -79,19 +79,27 @@ Alessandro Di Cara^1^,
 Sviatoslav Voloshynovskiy^2^,
 Jérôme Wojcik^1^
 
-1: Quartz Bio, Geneva, Geneva, Switzerland
+1: Quartz Bio, Geneva, Geneva 1202, Switzerland
 
-2: Stochastic Information Processing, University of Geneva, Geneva, Geneva, Switzerland
+2: Stochastic Information Processing, University of Geneva, Carouge, Geneva 1227, Switzerland
 
 # Title
 
-Replication of the Principal Component Analyses of the Human Genome Diversity Panel
+Replication of the principal component analyses of the human genome diversity panel
 
 # Abstract
+
+## Background
 
 In 2008, several principal component analyses (PCAs) applied on 660,918 single-nucleotide polymorphisms (SNPs) from 938 individuals from 51 worldwide populations of the Human Genome Diversity Panel were published by Li *et al.*.
 
 PCAs were applied on subsets of individuals sharing a common geographic origin and showed that in several geographic regions, genome-wide variations of SNPs grouped individuals by populations in the two first principal components.
+
+## Methods
+
+## Results
+
+## Conclusions
 
 In this study we replicated the PCAs applied on two geographic subsets, first on individuals from Europe and second on individuals from the Middle East & North Africa.
 
@@ -105,61 +113,61 @@ Genomics
 
 # Introduction
 
-Quartz Bio and the Stochastic Information Processing group are involved in the PRECISESADS project, which aims at reclassifying Systemic Autoimmune Diseases (SADs), a group of chronic inflammatory conditions characterized by the presence of unspecific autoantibodies in the serum and serious clinical consequences, based on genetic and molecular biomarkers rather than clinical criteria.
+Quartz Bio and the Stochastic Information Processing group are involved in the PRECISESADS project (http://www.precisesads.eu/), which aims at reclassifying Systemic Autoimmune Diseases (SADs), a group of chronic inflammatory conditions characterized by the presence of unspecific autoantibodies in the serum and resulting in serious clinical consequences, based on genetic and molecular biomarkers rather than clinical criteria.
 
 In order to use genetic similarities to deliver personalized treatments to patients affected by SADs as well as other diseases, it is important to first understand the genetic structures in healthy populations.
 
-In 2008, Li *et al.*^[1](#ref1)^ showed that, although specific world regions have different genetic origins, all revealed population structures in principal component analyses (PCAs). Similar population structures were also observed in studies using other genome-wide variations datasets ^[2](#ref2),[3](#ref3)^.
+In 2008, Li *et al.*^[1](#ref1)^ showed that although specific world regions have different genetic origins, all revealed population structures in principal component analyses (PCAs). Similar population structures were also observed in studies using other genome-wide variations datasets ^[2](#ref2),[3](#ref3)^.
 
-Li *et al.* applied PCAs on subsets of individuals from two geographic regions, Europe and the Middle East & North Africa and displayed the results on the two first principal components, respectively as figures 2A and 2B (with the latter labeled only Middle East).
+Li *et al.* applied PCAs on subsets of individuals from two geographic regions, Europe and the Middle East & North Africa and displayed the results on the two first principal components in their article as Figures 2A and B, respectively (with the latter labeled only Middle East).
 
 In an attempt to replicate these two figures, we performed quality control, minor allele frequency filtering, tag SNP selection^[4](#ref4)^, and PCAs on both regional subsets of the SNP microarray data. The PCAs were then displayed on the first two principal components.
 
-The replicated figures were found to match closely the original figures and therefore confirmed a successful replication.
+The replicated figures were found to match closely to the original figures and therefore confirmed a successful replication.
 
 # Methods
 
 ## Genotype data
 
-The dataset consisted of two files; a zip file including the genotype data of 660,918 SNPs from 1,043 individuals with the annotations of the SNPs, and a text file composed of the annotations of 953 individuals.
+The dataset consisted of two files; a zip file including the genotype data of 660,918 SNPs from 1,043 individuals with the annotations of the SNPs, and a text file composed of the annotations of 953 individuals (see Data and software availability).
 
 The annotations of individuals were used to create two subsets of the data. The first contained 157 individuals from Europe and the second contained 163 individuals from the Middle East & North Africa.
 
 ## Analysis sets
 
-For each geographic region subset of the data, we verified that no individuals had missing value rates above 3% and excluded SNPs with missing value rates above 1%. An additive genetic model was then used to encode each A/B SNP (A/A = 0, A/B = 1, B/B = 2). SNPs with minor allele frequency below 5% were excluded to remove rare variants, which are more prone to genotyping errors. In addition, in order to decrease the required computation time and memory usage, redundant SNPs were removed by applying TagSNP^[4](#ref4)^ (r2 > 0.8, window of 500,000 base pairs). The missing values were imputed by random sampling of each SNP. Then each SNP was centered and scaled to unit variance. All steps were performed using the SNPClust R package^[2](#ref2)^.
+For each geographic region subset of the data, we verified that no individuals had missing value rates above 3% and excluded SNPs with missing value rates above 1%. An additive genetic model^[4](#ref4)^ was then used to encode each A/B SNP (A/A = 0, A/B = 1, B/B = 2). SNPs with minor allele frequency below 5% were excluded to remove rare variants, which are more prone to genotyping errors. In addition, in order to decrease the required computation time and memory usage, redundant SNPs were removed by applying TagSNP^[5](#ref5)^ (r2 > 0.8, window of 500,000 base pairs). The missing values were imputed by random sampling of each SNP. Then each SNP was centered and scaled to unit variance. All steps were performed using the SNPClust R package v1.0.0^[2](#ref2)^.
 
-For the Europe subset, a total of `r dims$SNPs` SNPs from `r dims$Samples` individuals were selected for analysis. This defines our analysis set of Europe.
+For the Europe subset, a total of `r dims$SNPs` SNPs from `r dims$Samples` individuals were selected for analysis. This defines our Europe analysis set.
 
-For the Middle East & North Africa subset, a total of `r dims_africa$SNPs` SNPs from `r dims_africa$Samples` samples were selected for analysis. This defines our analysis set of Middle East and North Africa.
+For the Middle East & North Africa subset, a total of `r dims_africa$SNPs` SNPs from `r dims_africa$Samples` samples were selected for analysis. This defines our Middle East & North Africa analysis set.
 
-For comparison, the supporting online material of Li *et al.* reported that individuals with missing value rates above 2.5% and SNPs with missing value rates above 5% were excluded. Table S1 of Li *et al.* reported that 156 individuals from Europe and 160 from the Middle East & North Africa were used and the supporting online material reported that 642,690 SNPs were used.
+For comparison, the supporting online material of Li *et al.* reported that individuals with missing value rates above 2.5% and SNPs with missing value rates above 5% were excluded. Table S1 of Li *et al.* reports that 156 individuals from Europe and 160 from the Middle East & North Africa were used and the supporting online material reports that 642,690 SNPs were used.
 
-## Principal Component Analyses
+## Principal component analyses
 
-PCAs were applied on the two analysis sets and displayed using the SNPClust R package^[2](#ref2)^. Principal component analysis (PCA) is a dimensionality reduction method, which projects SNPs by linear combination to maximize the variance on successive axes, *i.e.* principal components, while constraining the axes to be orthogonal.
+PCAs were applied on the two analysis sets and displayed using the SNPClust R package v1.0.0^[2](#ref2)^. Principal component analysis (PCA) is a dimensionality reduction method, which projects SNPs by linear combination to maximize the variance on successive axes, *i.e.* principal components, while constraining the axes to be orthogonal.
 
-The supporting online material of Li *et al.* reported that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK^[5](#ref5)^ and then performed PCAs on the IBS matrix for each region separately.
+The supporting online material of Li *et al.* reports that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK^[6](#ref6)^ (version not provided) and then performed PCAs on the IBS matrix for each region separately. In this study PCAs were applied directly on the analysis sets and not on IBS matrices.
 
 # Results
 
 ## PCA of the Europe analysis set
 
-The PCA of the analysis set of Europe was displayed on the two first principal components ([Figure 1](#fig1)). Individuals were grouped by population and the replicated figure matched closely with Li *et al.*'s figure 2A.
+The PCA of the Europe analysis set was displayed on the two first principal components ([Figure 1](#fig1)). Individuals were grouped by population and the replicated figure matched closely with Li *et al.*'s Figure 2A.
 
-The explained variance was almost identical, as the replication stated 2.1% in PC1 and 1.6% in PC2 while  Li *et al.*'s figure 2A stated 2.4% and 1.6% respectively.
+The explained variance was almost identical, as the replication stated 2.1% in PC1 and 1.6% in PC2 while  Li *et al.*'s Figure 2A stated 2.4% and 1.6% respectively.
 
 ```{r}
 ggplot2::ggsave('figure1.eps', ggeu)
 ```
 
-## PCA of the analysis set of Middle East and North Africa
+## PCA of the Middle East & North Africa analysis set
 
-The PCA of the analysis set of Middle East and North Africa was displayed on the two first principal components ([Figure 2](#fig2)). Individuals were grouped by populations and the replicated figure matched closely with Li *et al.*'s figure 2B.
+The PCA of the Middle East & North Africa analysis set was displayed on the two first principal components ([Figure 2](#fig2)). Individuals were grouped by populations and the replicated figure matched closely with Li *et al.*'s figure 2B.
 
-Two differences from Li *et al.*'s analysis were noted, first the Bedouin and Druze populations exhibited a larger spread on PC1 in the original figure, second one Bedouin individual was located with Mozabite individuals, which did not appear in Li *et al.*'s figure 2B. 
+Two differences from Li *et al.*'s analysis were noted, first the Bedouin and Druze populations exhibited a larger spread on PC1 in the original figure. Second, one Bedouin individual was located with Mozabite individuals, which did not appear in Li *et al.*'s Figure 2B. 
 
-The explained variance was slightly smaller, as the replication stated 3.1% in PC1 and 2.2% in PC2 while Li *et al.*'s figure 2B stated 5.0% and 2.6% respectively.
+The explained variance was slightly smaller, as the replication stated 3.1% in PC1 and 2.2% in PC2, while Li *et al.*'s Figure 2B stated 5.0% and 2.6% respectively.
 
 ```{r}
 ggplot2::ggsave('figure2.eps', ggafr)
@@ -167,49 +175,55 @@ ggplot2::ggsave('figure2.eps', ggafr)
 
 # Discussion
 
-The replicated figures matched closely the original figures although two differences appeared when examining the Middle East & North Africa subset: the smaller spread of two populations and the presence of an outlier.
+The replicated figures matched closely to the original figures, although two differences appeared when examining the Middle East & North Africa subset: the smaller spread of two populations and the presence of an outlier.
 
-The main results were therefore replicated and can be independently reproduced by using publicly available data, source code, and computing environment.
+Therefore, the main results were replicated and can be independently reproduced by using publicly available data, source code, and computing environment.
 
 We successfully confirmed that although the two geographic regions studied had different genetic origins, both exhibited populations structures in PCAs.
 
 Understanding the genetic structure of healthy populations will enable us to use genetic similarities to deliver personalized treatments to patients affected by SADs. Using this replication, the PRECISESADS project will be able to compare clusters of patients affected by SADs to clusters of healthy individuals, independently from their ancestry-driven genetic structure^[2](#ref2)^.
 
-# Data availability
+# Data and software availability
 
 All data sets are available from HGDP-CEPH. As stated in Li *et al.*^[1](#ref1)^, the data sets are freely available online. Although the links that were provided are now outdated, the two data files are still available at http://www.hagsc.org/hgdp/data/hgdp.zip and ftp://ftp.cephb.fr/hgdp_v3/hgdp-ceph-unrelated.out.
 
-# Software availability
+The PCAs were computed and displayed using the previously published R package SNPClust v1.0.0^[2](#ref2)^.
 
-The PCAs were computed and displayed using the previously published R package SNPClust^[2](#ref2)^. The source code required to generate this article and the definition of the corresponding computing environment, in which all required software are installed, are available at https://github.com/ThomasChln/reproducible-hgdp. The computing environment is a Docker container which can also be downloaded at https://hub.docker.com/thomaschln/reproducible-hgdp. 
+Computing environment in a Docker container is available from: https://hub.docker.com/r/thomaschln/reproducible-hgdp.
 
-# Consent
+Source code required to generate this article and the definition of the corresponding computing environment, in which all required software are installed: https://github.com/ThomasChln/reproducible-hgdp.
 
-The data was previously published^[1](#ref1)^ and approved by ethics committees. No samples were used and records were de-identified.
+Archived source code as at time of publication:
+
+License: GNU General Public License version 3.0
+
+# Ethical statement
+
+The data were previously published^[1](#ref1)^ and approved by ethics committees. No samples were used and records were de-identified.
 
 # Author contributions
 
-Conceptualization: JW SV.
+Conceptualization: JW SV;
 
-Formal analysis: TC.
+Formal analysis: TC;
 
-Funding acquisition: JW.
+Funding acquisition: JW;
 
-Investigation: JW ADC.
+Investigation: JW ADC;
 
-Methodology: TC JW.
+Methodology: TC JW;
 
-Project administration: JW.
+Project administration: JW;
 
-Software: TC.
+Software: TC;
 
-Supervision: JW SV.
+Supervision: JW SV;
 
-Validation: TC JW ADC.
+Validation: TC JW ADC;
 
-Visualization: TC.
+Visualization: TC;
 
-Writing - original draft: TC.
+Writing - original draft: TC;
 
 Writing - review & editing: JW ADC SV.
 
@@ -219,7 +233,7 @@ Thomas Charlon, Alessandro Di Cara, and Jérôme Wojcik are employees of Quartz 
 
 # Grant information
 
-Quartz Bio S.A. provided support in the form of salaries for Thomas Charlon, Alessandro Di Cara, and Jérôme Wojcik, but did not have any additional role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. This work has received support from the EU/EFPIA/ Innovative Medicines Initiative Joint Undertaking PRECISESADS grant no. 115565.
+Quartz Bio S.A. provided support in the form of salaries for Thomas Charlon, Alessandro Di Cara, and Jérôme Wojcik, but did not have any additional role in the study design, data collection and analysis, decision to publish, or preparation of the manuscript. This work has received support from the EU/EFPIA/ Innovative Medicines Initiative Joint Undertaking PRECISESADS (grant no. 115565).
 
 # Acknowledgments
 
@@ -237,16 +251,19 @@ We thank K. Forner for contributions on the software.
 **3.** NOVEMBRE, John, et al. Genes mirror geography within Europe. Nature, 2008, 456. Jg., Nr. 7218, S. 98-101.
 
 ###### {#ref4}
-**4.** STRAM, Daniel O. Tag SNP selection for association studies. Genetic epidemiology, 2004, 27. Jg., Nr. 4, S. 365-374.
+**4.** CLARKE, Geraldine M, et al. Basic statistical analysis in genetic case-control studies. Nature Protocols, 2011, Vol. 6, no. 2, p. 121-133. DOI 10.1038/nprot.2010.182.
 
 ###### {#ref5}
-**5.** PURCELL, Shaun, et al. PLINK: a tool set for whole-genome association and population-based linkage analyses. The American Journal of Human Genetics, 2007, 81. Jg., Nr. 3, S. 559-575.
+**5.** STRAM, Daniel O. Tag SNP selection for association studies. Genetic epidemiology, 2004, 27. Jg., Nr. 4, S. 365-374.
 
-# Figures
+###### {#ref6}
+**6.** PURCELL, Shaun, et al. PLINK: a tool set for whole-genome association and population-based linkage analyses. The American Journal of Human Genetics, 2007, 81. Jg., Nr. 3, S. 559-575.
+
+# Figures legends
 
 ###### {#fig1}
 
-**Figure 1.** Two first principal components of the Europe analysis set.
+**Figure 1. Two first principal components of the Europe analysis set.**
 
 ```{r}
 #ggeu
@@ -256,7 +273,7 @@ Visualization of the principal component analysis on `r dims$SNPs` SNPs from `r 
 
 ###### {#fig2}
 
-**Figure 2.** Two first principal components of the Middle East & North Africa analysis set.
+**Figure 2. Two first principal components of the Middle East & North Africa analysis set.**
 
 ```{r}
 #ggafr
