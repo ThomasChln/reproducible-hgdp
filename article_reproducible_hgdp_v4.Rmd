@@ -43,32 +43,29 @@ pca_by_region = function(region) {
   get(load(rds_path))
 }
 
+# Get variables and plot for Europe subset
+
 snpclust_object = pca_by_region('Europe')
 # take last line of qc df and samples-snps columns
-dims = snpclust_object$qc %>% `[`(nrow(.), c('Samples', 'SNPs')) %>% format(big.mark = ',')
+dims = snpclust_object$qc %>% `[`(nrow(.), c('Samples', 'SNPs')) %>%
+  format(big.mark = ',')
 
 snpclust_object$pca$population %<>%
   gsub('French_Basque', 'Basque', .) %>%
   gsub('North_Italian', 'Italian', .) %>% factor
 
-gg_color_hue <- function(n) {
-  hues = seq(15, 375, length = n + 1)
-  hcl(h = hues, l = 65, c = 100)[1:n]
-}
-colors = gg_color_hue(8)
-
 ggeu <- ggplot_pca(pca = snpclust_object$pca, groups = 'population') +
   ggplot2::scale_x_reverse() + ggplot2::scale_y_reverse() +
-  #ggplot2::scale_color_manual(values = colors) +
   ggplot2::labs(color = 'Population')
+
+# Get variables and plot for North Africa & Middle East subset
 
 snpclust_object_africa = pca_by_region('Middle Est|North Africa')
 # take last line of qc df and samples-snps columns
-dims_africa = snpclust_object_africa$qc %>% `[`(nrow(.), c('Samples', 'SNPs')) %>% format(big.mark = ',')
+dims_africa = snpclust_object_africa$qc %>%
+  `[`(nrow(.), c('Samples', 'SNPs')) %>% format(big.mark = ',')
 
-colors = c('black', 'red', 'green', 'blue')
 ggafr <- ggplot_pca(pca = snpclust_object_africa$pca, groups = 'population') +
-  #ggplot2::scale_color_manual(values = colors) +
   ggplot2::labs(color = 'Population')
 ```
 
@@ -91,17 +88,21 @@ Replication of the principal component analyses of the human genome diversity pa
 
 ## Background
 
-In 2008, several principal component analyses (PCAs) applied on 660,918 single-nucleotide polymorphisms (SNPs) from 938 individuals from 51 worldwide populations of the Human Genome Diversity Panel were published by Li *et al.*.
+In 2008, several principal component analyses (PCAs) applied on 660,918 single-nucleotide polymorphisms (SNPs) from 938 individuals from 51 worldwide populations of the Human Genome Diversity Panel were published by Li *et al.*. PCAs were applied on subsets of individuals sharing a common geographic origin and showed that in several geographic regions, genome-wide variations of SNPs grouped individuals by populations in the two first principal components.
 
-PCAs were applied on subsets of individuals sharing a common geographic origin and showed that in several geographic regions, genome-wide variations of SNPs grouped individuals by populations in the two first principal components.
+In this study we replicated the PCAs applied on two geographic subsets, first on individuals from Europe and second on individuals from the Middle East & North Africa.
 
 ## Methods
 
+Quality control, feature selection, and PCA were applied on each geographic subset. The results were displayed on the two first principal components and compared to the original figures.
+
 ## Results
+
+The replicated figures were found to match closely to the original figures.
 
 ## Conclusions
 
-In this study we replicated the PCAs applied on two geographic subsets, first on individuals from Europe and second on individuals from the Middle East & North Africa.
+Therefore, the main results were replicated and can be independently reproduced by using publicly available data, source code, and computing environment.
 
 # Keywords
 
@@ -123,13 +124,11 @@ Li *et al.* applied PCAs on subsets of individuals from two geographic regions, 
 
 In an attempt to replicate these two figures, we performed quality control, minor allele frequency filtering, tag SNP selection^[4](#ref4)^, and PCAs on both regional subsets of the SNP microarray data. The PCAs were then displayed on the first two principal components.
 
-The replicated figures were found to match closely to the original figures and therefore confirmed a successful replication.
-
 # Methods
 
 ## Genotype data
 
-The dataset consisted of two files; a zip file including the genotype data of 660,918 SNPs from 1,043 individuals with the annotations of the SNPs, and a text file composed of the annotations of 953 individuals (see Data and software availability).
+The dataset consisted of two files: a zip file including the genotype data of 660,918 SNPs from 1,043 individuals with the annotations of the SNPs, and a text file composed of the annotations of 953 individuals (see Data and software availability).
 
 The annotations of individuals were used to create two subsets of the data. The first contained 157 individuals from Europe and the second contained 163 individuals from the Middle East & North Africa.
 
@@ -147,7 +146,7 @@ For comparison, the supporting online material of Li *et al.* reported that indi
 
 PCAs were applied on the two analysis sets and displayed using the SNPClust R package v1.0.0^[2](#ref2)^. Principal component analysis (PCA) is a dimensionality reduction method, which projects SNPs by linear combination to maximize the variance on successive axes, *i.e.* principal components, while constraining the axes to be orthogonal.
 
-The supporting online material of Li *et al.* reports that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK^[6](#ref6)^ (version not provided) and then performed PCAs on the IBS matrix for each region separately. In this study PCAs were applied directly on the analysis sets and not on IBS matrices.
+The supporting online material of Li *et al.* reports that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK^[6](#ref6)^ (version not specified) and then performed PCAs on the IBS matrix for each region separately. In this study PCAs were applied directly on the analysis sets and not on IBS matrices.
 
 # Results
 
@@ -191,9 +190,9 @@ The PCAs were computed and displayed using the previously published R package SN
 
 Computing environment in a Docker container is available from: https://hub.docker.com/r/thomaschln/reproducible-hgdp.
 
-Source code required to generate this article and the definition of the corresponding computing environment, in which all required software are installed: https://github.com/ThomasChln/reproducible-hgdp.
+Source code of this article and Dockerfile: https://github.com/ThomasChln/reproducible-hgdp.
 
-Archived source code as at time of publication:
+Archived source code as at time of publication: https://doi.org/10.5281/zenodo.345122
 
 License: GNU General Public License version 3.0
 
