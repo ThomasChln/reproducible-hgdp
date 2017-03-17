@@ -1,9 +1,6 @@
 # reproducible-hgdp
 Reproducible replication of the PCAs of the Human Genome Diversity Panel published at https://f1000research.com/articles/6-278/v1
 
-<span class='altmetric-embed' data-badge-type='4' data-hide-no-mentions='true' data-doi="10.12688/f1000research.11055.1"></span>
-
-
 The figures replicated are Figures 2A and B of https://www.ncbi.nlm.nih.gov/pubmed/18292342
 
 Install [Docker Compose](https://docs.docker.com/compose/install/) and use make to build the complete docx file and figures. The dataset and the docker image will be downloaded and the complete analysis will be computed and results stored in rds files. You can use make clean after to reset the folder.
