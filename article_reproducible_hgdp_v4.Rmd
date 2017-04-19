@@ -124,6 +124,8 @@ Li *et al.* applied PCAs on subsets of individuals from two geographic regions, 
 
 In an attempt to replicate these two figures, we performed quality control, minor allele frequency filtering, tag SNP selection^[4](#ref4)^, and PCAs on both regional subsets of the SNP microarray data. The PCAs were then displayed on the first two principal components.
 
+The replicated figures were found to match closely to the original figures, and therefore confirmed a successful replication.
+
 # Methods
 
 ## Genotype data
@@ -134,7 +136,7 @@ The annotations of individuals were used to create two subsets of the data. The 
 
 ## Analysis sets
 
-For each geographic region subset of the data, we verified that no individuals had missing value rates above 3% and excluded SNPs with missing value rates above 1%. An additive genetic model^[4](#ref4)^ was then used to encode each A/B SNP (A/A = 0, A/B = 1, B/B = 2). SNPs with minor allele frequency below 5% were excluded to remove rare variants, which are more prone to genotyping errors. In addition, in order to decrease the required computation time and memory usage, redundant SNPs were removed by applying TagSNP^[5](#ref5)^ (r2 > 0.8, window of 500,000 base pairs). The missing values were imputed by random sampling of each SNP. Then each SNP was centered and scaled to unit variance. All steps were performed using the SNPClust R package v1.0.0^[2](#ref2)^.
+For each geographic region subset of the data, we verified that no individuals had missing value rates above 3% and excluded SNPs with missing value rates above 1%. An additive genetic model was then used to encode each A/B SNP (A/A = 0, A/B = 1, B/B = 2), which converts categorical SNP values to numerics by assuming that the effect of the A/B heterozygote and B/B homozygote are proportional to the number of B alleles. SNPs with minor allele frequency below 5% were excluded to remove rare variants, which are more prone to genotyping errors. In addition, in order to decrease the required computation time and memory usage, redundant SNPs were removed by applying TagSNP^[4](#ref4)^ (r2 > 0.8, window of 500,000 base pairs). The missing values were imputed by random sampling of each SNP. Then each SNP was centered and scaled to unit variance. All steps were performed using the SNPClust R package v1.0.0^[2](#ref2)^.
 
 For the Europe subset, a total of `r dims$SNPs` SNPs from `r dims$Samples` individuals were selected for analysis. This defines our Europe analysis set.
 
@@ -146,7 +148,7 @@ For comparison, the supporting online material of Li *et al.* reported that indi
 
 PCAs were applied on the two analysis sets and displayed using the SNPClust R package v1.0.0^[2](#ref2)^. Principal component analysis (PCA) is a dimensionality reduction method, which projects SNPs by linear combination to maximize the variance on successive axes, *i.e.* principal components, while constraining the axes to be orthogonal.
 
-The supporting online material of Li *et al.* reports that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK^[6](#ref6)^ (version not specified) and then performed PCAs on the IBS matrix for each region separately. In this study, PCAs were applied on the analysis sets and not on IBS matrices.
+The supporting online material of Li *et al.* reports that they first computed the Identity-by-State (IBS) matrix among the 938 individuals by using PLINK (version not provided)^[5](#ref5)^ and then performed PCAs on the IBS matrix for each region separately. In this study, PCAs were applied on the analysis sets and not on IBS matrices.
 
 # Results
 
@@ -250,13 +252,10 @@ We thank K. Forner for contributions on the software.
 **3.** NOVEMBRE, John, et al. Genes mirror geography within Europe. Nature, 2008, 456. Jg., Nr. 7218, S. 98-101.
 
 ###### {#ref4}
-**4.** CLARKE, Geraldine M, et al. Basic statistical analysis in genetic case-control studies. Nature Protocols, 2011, Vol. 6, no. 2, p. 121-133. DOI 10.1038/nprot.2010.182.
+**4.** STRAM, Daniel O. Tag SNP selection for association studies. Genetic epidemiology, 2004, 27. Jg., Nr. 4, S. 365-374.
 
 ###### {#ref5}
-**5.** STRAM, Daniel O. Tag SNP selection for association studies. Genetic epidemiology, 2004, 27. Jg., Nr. 4, S. 365-374.
-
-###### {#ref6}
-**6.** PURCELL, Shaun, et al. PLINK: a tool set for whole-genome association and population-based linkage analyses. The American Journal of Human Genetics, 2007, 81. Jg., Nr. 3, S. 559-575.
+**5.** PURCELL, Shaun, et al. PLINK: a tool set for whole-genome association and population-based linkage analyses. The American Journal of Human Genetics, 2007, 81. Jg., Nr. 3, S. 559-575.
 
 # Figures legends
 
