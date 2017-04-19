@@ -7,6 +7,7 @@ Install [Docker Compose](https://docs.docker.com/compose/install/) and use make 
 
 ```
 git clone https://github.com/ThomasChln/reproducible-hgdp
+cd reproducible-hgdp/
 make
 ```
 
