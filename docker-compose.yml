@@ -2,7 +2,7 @@ version: '2'
 
 services:
   repro_hgdp:
-    build: .
+    image: thomaschln/reproducible-hgdp
     volumes:
       - .:/tmp
     command: R -e "setwd('tmp');rmarkdown::render('article_reproducible_hgdp_v4.Rmd')"
